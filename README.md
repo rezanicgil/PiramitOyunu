@@ -16,8 +16,8 @@ The board is stored as rows of increasing length. A short digit string defines e
 
 ## Run locally
 
-Open the repository in Android Studio with Android SDK 32 installed. Run the app on an emulator or device using API 25 or later. To build from the command line, use `./gradlew assembleDebug` (Windows: `gradlew.bat assembleDebug`).
+Use JDK 11 with the included Gradle wrapper and Android SDK 32. Open the repository in Android Studio. Run the app on an emulator or device using API 25 or later. To build from the command line, use `./gradlew assembleDebug` (Windows: `gradlew.bat assembleDebug`).
 
 ## Checks and limitations
 
-Tap a cell and then another cell in the same row. Only the new cell should be highlighted. The repository contains Android template tests; they do not cover the puzzle rules. The view tracks selections but does not enforce a winning route or persist a game across activity recreation.
+Tap a cell and then another cell in the same row. Only the new cell should be highlighted. Run `./gradlew testDebugUnitTest` for the [board tests](app/src/test/java/com/example/rezan/piramitoyunu/BulmacaTest.java). One test checks the board for input `123456`: rows are `1`, `2 3`, and `4 5 6`, with no selection. The other checks that replacing a selected column preserves the selections in other rows. These JVM tests cover board state; touch hit testing and screen rendering still need a device or emulator. The view tracks selections but does not enforce a winning route or persist a game across activity recreation.
